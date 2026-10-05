@@ -13,7 +13,7 @@ async function workspace(t, { standalone = false } = {}) {
   t.after(() => rm(root, { recursive: true, force: true }));
   const target = standalone ? path.join(root, "rotom-pocket") : path.join(root, "projects", "roguesave");
   await mkdir(path.join(target, "scripts"), { recursive: true });
-  for (const entry of ["manifest.json", "package.json", "src", "sidepanel", "THIRD_PARTY_NOTICES.md", "scripts/package-extension.mjs"]) {
+  for (const entry of ["manifest.json", "package.json", "src", "sidepanel", "LICENSE", "THIRD_PARTY_NOTICES.md", "scripts/package-extension.mjs"]) {
     await cp(new URL(entry, project), path.join(target, entry), { recursive: true });
   }
   const manifest = JSON.parse(await readFile(path.join(target, "manifest.json"), "utf8"));
@@ -28,8 +28,11 @@ test("standalone clones build only inside their own repository and include third
   for (const prefix of ["RogueSave", "RogueSave-Offline"]) {
     const notices = await readFile(path.join(f.dist, prefix, "THIRD_PARTY_NOTICES.md"), "utf8");
     assert.match(notices, /Third-Party Notices/);
+    assert.match(notices, /MIT license applies to the original code/);
+    assert.match(await readFile(path.join(f.dist, prefix, "LICENSE"), "utf8"), /MIT License/);
     const archive = await readFile(path.join(f.dist, `${prefix}-v${f.version}.zip`));
     assert.ok(archive.includes(Buffer.from("THIRD_PARTY_NOTICES.md")));
+    assert.ok(archive.includes(Buffer.from("LICENSE")));
   }
 });
 

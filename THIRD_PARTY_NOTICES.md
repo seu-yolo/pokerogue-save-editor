@@ -2,6 +2,10 @@
 
 This notice applies to RogueSave version 1.0.0.
 
+## License scope
+
+The MIT license applies to the original code and documentation of Rotom Pocket, including its hand-written SVG artwork. It does not relicense third-party images, fonts, game screenshots, names or trademarks. The embedded egg PNG in `docs/assets/readme/card-gacha.svg` retains the egg atlas's upstream terms. Bundled third-party materials retain the licenses and rights limitations described below and in `docs/ASSETS.md`; the root LICENSE does not grant rights in those materials.
+
 ## Bundled code and assets
 
 RogueSave 1.0.0 is implemented with browser Web APIs and Node.js built-in modules. It does not bundle third-party JavaScript packages or PokéRogue application code. It includes two unmodified Rotom images and an unmodified egg icon atlas from the PokéRogue asset repository, hand-written pixel-style SVG icons, and Fusion Pixel Font (12px proportional Simplified Chinese, release 2026.09.25, SIL Open Font License 1.1). Font copyright and license notices are included in `sidepanel/assets/fonts/OFL.txt` and `sidepanel/assets/fonts/LICENSES/`.

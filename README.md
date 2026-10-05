@@ -115,7 +115,19 @@
 
 扩展版本为 `1.0.0`，适配 PokéRogue `1.12.0.10` 和 `1.12.0.11`，需要 Chrome `116` 或更新版本。游戏支持范围会随适配更新；未适配版本可查看和导出备份。
 
-目前尚未发布 [Release 安装包](https://github.com/seu-yolo/rotom-pocket/releases)。现在可从源码打包；需要 [Node.js 20+](https://nodejs.org/) 和 Git，不需要 `npm install`：
+到 [v1.0.0 下载页](https://github.com/seu-yolo/rotom-pocket/releases/tag/v1.0.0) 下载 `RogueSave-v1.0.0.zip` 并解压。官网玩家用这个包；`RogueSave-Offline-v1.0.0.zip` 只用于本机离线测试。下载安装包不需要 Node.js。
+
+1. 在 Chrome 地址栏打开 `chrome://extensions/`，开启右上角“开发者模式”。
+2. 点击“加载已解压的扩展程序”，选择解压后的文件夹（里面应直接有 `manifest.json`）。
+3. 打开 [PokéRogue 官网](https://pokerogue.net/)，若已经打开则刷新一次游戏页面。
+4. 点击浏览器工具栏的“洛托姆口袋”图标，打开侧栏；找不到图标时，到扩展菜单中将它固定。
+
+<details>
+<summary>从源码打包，以及 RogueSave 这个名字</summary>
+
+`RogueSave` 是项目早期名称，安装包暂时沿用它。下载页里的 `Source code` ZIP 是源码，不是扩展安装包。
+
+想自己打包，需要 [Node.js 20+](https://nodejs.org/) 和 Git，不需要 `npm install`：
 
 ```bash
 git clone https://github.com/seu-yolo/rotom-pocket.git
@@ -123,15 +135,7 @@ cd rotom-pocket
 npm run pack
 ```
 
-1. 在 Chrome 地址栏打开 `chrome://extensions/`，开启右上角“开发者模式”。
-2. 点击“加载已解压的扩展程序”，选择刚生成的 `dist/RogueSave/` 文件夹（里面应直接有 `manifest.json`）。
-3. 打开 [PokéRogue 官网](https://pokerogue.net/)，若已经打开则刷新一次游戏页面。
-4. 点击浏览器工具栏的“洛托姆口袋”图标，打开侧栏；找不到图标时，到扩展菜单中将它固定。
-
-<details>
-<summary>目录为什么叫 RogueSave？源码 ZIP 能直接安装吗？</summary>
-
-`RogueSave` 是项目早期名称，安装目录暂时沿用它。仓库准备公开中，目前为私有仓库，克隆需要访问权限。发布后，安装包也会放在 Releases；GitHub 的源码 ZIP 不是可直接加载的扩展包。
+生成的扩展文件夹是 `dist/RogueSave/`。离线版使用 `npm run pack:offline`，详情见 [离线版说明](docs/OFFLINE_TESTING.md)。
 
 </details>
 
@@ -196,6 +200,8 @@ npm run pack
 
 扩展在目标游戏页工作，修改记录保存在本机。不读取 Cookie、密码或浏览历史，也不把存档上传到第三方服务器。账号通过游戏自身接口保存；保存异常时，请按提示重新载入游戏核对结果。
 
-感谢 PokéRogue 与社区的作品，以及 [Fusion Pixel Font](https://github.com/TakWolf/fusion-pixel-font) 的中文像素字体。自有代码许可证尚待确定，第三方图片、字体和游戏截图不属于本项目自有代码许可；来源与权利说明见 [素材说明](docs/ASSETS.md) 和 [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md)。
+自有代码与文档采用 [MIT 许可证](LICENSE)。第三方图片、字体和游戏截图保留各自许可及权利限制，不因项目开源而改为 MIT；来源与说明见 [素材说明](docs/ASSETS.md) 和 [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md)。
+
+感谢 PokéRogue 与社区的作品，以及 [Fusion Pixel Font](https://github.com/TakWolf/fusion-pixel-font) 的中文像素字体。
 
 <p align="center"><img src="sidepanel/assets/rotom-icon.png" width="40" alt=""><br><sub>为保留游戏体验，请谨慎使用。</sub><br><a href="#游戏">回到冒险起点 ↑</a></p>

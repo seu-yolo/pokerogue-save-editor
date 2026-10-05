@@ -500,6 +500,31 @@ export async function pokeroguePageCommand(request) {
     if (stableStringify(captureSystemCache().sort()) !== stableStringify(before.slice().sort())) throw new Error("账号缓存恢复失败");
   }
 
+  function captureAccountRuntime(scene) {
+    const gameData = scene.gameData;
+    // The official stale-session recovery reuses GameData, but replaces these
+    // containers. Object identity alone cannot distinguish the new account.
+    const fields = ["dexData", "starterData", "voucherCounts", "gameStats", "eggs", "eggPity", "unlockPity"];
+    return { gameData, trainerId: gameData.trainerId, secretId: gameData.secretId,
+      containers: fields.map(key => [key, gameData[key]]) };
+  }
+
+  function accountRuntimeMatches(scene, original) {
+    return scene.gameData === original.gameData
+      && scene.gameData.trainerId === original.trainerId
+      && scene.gameData.secretId === original.secretId
+      && original.containers.every(([key, value]) => scene.gameData[key] === value);
+  }
+
+  function canRestoreAccount(scene, original, guard, expectedSystem = null) {
+    try {
+      return accountRuntimeMatches(scene, original) && transactionGuardMatches(scene, guard)
+        && (!expectedSystem || accountSnapshotString(systemSnapshot(scene)) === accountSnapshotString(expectedSystem));
+    } catch {
+      return false;
+    }
+  }
+
   async function accountPreview(scene, payload) {
     const data = payload.operations?.every(operation => ["setVoucher", "addLegendaryEggs"].includes(operation.type)) ? {} : await gameExports(scene);
     const plan = planAccount(scene, data, payload.operations);
@@ -526,7 +551,7 @@ export async function pokeroguePageCommand(request) {
     });
     const cache = captureSystemCache();
     const guard = captureTransactionGuard(scene);
-    const originalGameData = scene.gameData;
+    const originalRuntime = captureAccountRuntime(scene);
     window[COMMIT_LOCK_KEY] = true;
     const releaseInput = lockGameInput(scene);
     let attemptedSave = false;
@@ -537,12 +562,14 @@ export async function pokeroguePageCommand(request) {
       const saved = await scene.gameData.saveSystem();
       if (saved !== true) throw new Error("游戏未确认账号保存成功");
       const afterSystem = systemSnapshot(scene);
-      if (scene.gameData !== originalGameData || !transactionGuardMatches(scene, guard) || accountSnapshotString(afterSystem) !== accountSnapshotString(plan.after)) throw new Error("保存期间游戏或账号状态发生变化");
+      if (!accountRuntimeMatches(scene, originalRuntime) || !transactionGuardMatches(scene, guard) || accountSnapshotString(afterSystem) !== accountSnapshotString(plan.after)) throw new Error("保存期间游戏或账号状态发生变化");
       return { ok: true, code: "VERIFIED", status: "verified", adapterVersion: ADAPTER_VERSION,
         message: "账号修改已保存；永久解锁可在下一次初始选择时使用", afterSystem, afterSystemJson: JSON.stringify(afterSystem) };
     } catch (error) {
       try {
-        if (scene.gameData !== originalGameData) throw new Error("账号已重新初始化，不能覆盖新状态");
+        if (!canRestoreAccount(scene, originalRuntime, guard, attemptedSave ? plan.after : null)) {
+          throw new Error("账号或游戏状态已变化，不能覆盖新状态");
+        }
         applyAccountSnapshot(scene, plan.before); restoreSystemCache(cache);
       }
       catch { return errorResult("UNCERTAIN", "账号保存与恢复未能确认，请导出备份并重新载入游戏", { status: "uncertain" }); }
@@ -3365,6 +3392,7 @@ export async function pokeroguePageCommand(request) {
     window[COMMIT_LOCK_KEY] = true;
     let releaseInput = null;
     const gameData = scene.gameData;
+    const originalRuntime = captureAccountRuntime(scene);
     const handler = findEggGachaHandler(scene);
     const originalEggs = gameData.eggs.slice();
     const originalEggPity = Array.isArray(gameData.eggPity) ? gameData.eggPity.slice() : null;
@@ -3377,6 +3405,7 @@ export async function pokeroguePageCommand(request) {
     const originalCache = typeof localStorage === "undefined" ? null : captureSystemCache();
     const guard = captureTransactionGuard(scene);
     let persistenceStarted = false;
+    let expectedSystem = null;
     const rollbackRuntime = () => {
       restoreArray(gameData.eggs, originalEggs);
       restoreArray(gameData.eggPity, originalEggPity);
@@ -3407,11 +3436,15 @@ export async function pokeroguePageCommand(request) {
         throw new Error("蛋列表数量与本次添加数量不一致");
       }
 
+      expectedSystem = typeof gameData.getSystemSaveData === "function" ? systemSnapshot(scene) : null;
       persistenceStarted = true;
       const saved = await gameData.saveSystem();
       if (saved !== true) throw new Error("游戏没有确认账号系统存档保存成功");
-      if (scene.gameData !== gameData || !transactionGuardMatches(scene, guard)
-        || generated.some(egg => !gameData.eggs.includes(egg))) throw new Error("保存期间游戏或蛋列表发生变化");
+      if (!accountRuntimeMatches(scene, originalRuntime) || !transactionGuardMatches(scene, guard)
+        || generated.some(egg => !gameData.eggs.includes(egg))
+        || (expectedSystem && accountSnapshotString(systemSnapshot(scene)) !== accountSnapshotString(expectedSystem))) {
+        throw new Error("保存期间游戏或账号状态发生变化");
+      }
 
       const afterSystem = typeof gameData.getSystemSaveData === "function" ? systemSnapshot(scene) : null;
       const response = {
@@ -3435,6 +3468,9 @@ export async function pokeroguePageCommand(request) {
       }
       return response;
     } catch (error) {
+      if (!canRestoreAccount(scene, originalRuntime, guard, persistenceStarted ? expectedSystem : null)) {
+        return errorResult("UNCERTAIN", "游戏已载入新状态，未覆盖账号或缓存；请重新载入并核对保存结果", { status: "uncertain" });
+      }
       rollbackRuntime();
       try { if (originalCache) restoreSystemCache(originalCache); } catch {
         return errorResult("UNCERTAIN", "账号缓存恢复失败，请重新载入并核对", { status: "uncertain" });

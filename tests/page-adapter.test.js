@@ -981,11 +981,13 @@ test("real account changes during an awaited save still produce uncertainty", as
   const { result } = await accountCommit([{ type: "unlockStarter", speciesId: 1 }]);
   assert.equal(result.code, "UNCERTAIN"); assert.equal(fixture.saves(), 1);
   assert.equal(fixture.scene.gameData.gameStats.playTime, 123);
-  assert.equal(fixture.scene.gameData.dexData[1].caughtAttr, 0n);
+  assert.equal(fixture.scene.gameData.voucherCounts[1], 99, "a competing update must never be rolled back");
+  assert.equal(fixture.cache.get("data_demo"), "updated-encrypted-cache");
+  assert.equal(fixture.scene.input.enabled, true);
 });
 
 test("failed account saves restore runtime and encrypted local cache but mark server result uncertain", async () => {
-  for (const save of ["false", "throw", "turn"]) {
+  for (const save of ["false", "throw"]) {
     const fixture = accountFixture({ save }); const before = fixture.snapshot();
     const { result } = await accountCommit([{ type: "unlockStarter", speciesId: 1, shiny: "2" }]);
     assert.equal(result.code, "UNCERTAIN", result.message);
@@ -1001,6 +1003,74 @@ test("account reinitialization during save is never overwritten by old account r
   const { result } = await accountCommit([{ type: "setVoucher", key: "0", value: 300 }]);
   assert.equal(result.code, "UNCERTAIN");
   assert.equal(fixture.scene.gameData.voucherCounts[0], 99);
+});
+
+test("same-instance official account reinitialization preserves refreshed data and cache", async () => {
+  for (const operation of [
+    { type: "setVoucher", key: "0", value: 300 },
+    { type: "unlockStarter", speciesId: 1, shiny: "2" },
+    { type: "addLegendaryEggs", source: "shiny", count: 2 },
+  ]) {
+    const fixture = accountFixture(); const data = fixture.scene.gameData;
+    let saves = 0; let refreshed;
+    data.saveSystem = async () => {
+      saves++;
+      data.starterData = { ...data.starterData, 1: { ...data.starterData[1], candyCount: 27 } };
+      data.dexData[1] = { ...data.dexData[1], caughtAttr: 149n, seenAttr: 149n };
+      data.eggs = [{ id: 987, tier: 3, hatchWaves: 80 }];
+      data.eggPity = [0, 7, 8, 9]; data.unlockPity = [0, 4, 5, 6];
+      data.gameStats = { eggsPulled: 50, legendaryEggsPulled: 5 };
+      data.voucherCounts[0] = 99;
+      fixture.cache.set("data_demo", "refreshed-encrypted-cache");
+      refreshed = fixture.snapshot();
+      return false;
+    };
+    const { result } = await accountCommit([operation]);
+    assert.equal(result.code, "UNCERTAIN"); assert.equal(result.status, "uncertain");
+    assert.equal(fixture.scene.gameData, data, "the official path does not replace GameData");
+    assert.deepEqual(fixture.snapshot(), refreshed);
+    assert.equal(fixture.cache.get("data_demo"), "refreshed-encrypted-cache");
+    assert.equal(fixture.cache.get("unrelated"), "keep");
+    assert.equal(fixture.scene.input.enabled, true); assert.equal(saves, 1);
+  }
+});
+
+test("account phase changes preserve the current state instead of restoring stale data", async () => {
+  for (const operation of [{ type: "setVoucher", key: "0", value: 300 },
+    { type: "addLegendaryEggs", source: "shiny", count: 2 }]) {
+    const fixture = accountFixture({ save: "turn" });
+    const { result } = await accountCommit([operation]);
+    assert.equal(result.code, "UNCERTAIN");
+    assert.equal(fixture.scene.currentBattle.turn, 4);
+    assert.equal(fixture.cache.get("data_demo"), "updated-encrypted-cache");
+    assert.equal(fixture.scene.input.enabled, true);
+  }
+});
+
+test("egg saves reject competing in-place account edits without overwriting them", async () => {
+  const fixture = accountFixture(); const save = fixture.scene.gameData.saveSystem;
+  fixture.scene.gameData.saveSystem = async () => {
+    fixture.scene.gameData.voucherCounts[1] = 99;
+    return save();
+  };
+  const { result } = await accountCommit([{ type: "addLegendaryEggs", source: "shiny", count: 1 }]);
+  assert.equal(result.code, "UNCERTAIN");
+  assert.equal(fixture.scene.gameData.voucherCounts[1], 99);
+  assert.equal(fixture.cache.get("data_demo"), "updated-encrypted-cache");
+  assert.equal(fixture.scene.input.enabled, true);
+});
+
+test("reinitialization to equal values is still detected through replaced containers", async () => {
+  const fixture = accountFixture();
+  fixture.scene.gameData.saveSystem = async () => {
+    fixture.scene.gameData.eggs = fixture.scene.gameData.eggs.slice();
+    fixture.cache.set("data_demo", "refreshed-encrypted-cache");
+    return false;
+  };
+  const { result } = await accountCommit([{ type: "setVoucher", key: "0", value: 300 }]);
+  assert.equal(result.code, "UNCERTAIN");
+  assert.equal(fixture.scene.gameData.voucherCounts[0], 300);
+  assert.equal(fixture.cache.get("data_demo"), "refreshed-encrypted-cache");
 });
 
 test("successful account egg saves return the version and authoritative JSON required by the background", async () => {
