@@ -58,6 +58,7 @@
 ## README 演示截图（2026-10-05）
 
 - `usage-collection-v0.4.4.jpg`、`usage-gacha-v0.4.4.jpg`：在 Chrome 中通过 `npm run preview:ui` 截取当前工具页面，使用 `tests/fixtures/ui-preview.js` 的合成数据。没有连接游戏或执行保存；图中的配置仅用于展示交互，不是物种合法配置的证据。
+- `usage-run-money-v0.4.4.jpg`、`usage-run-items-v0.4.4.jpg`：同一模拟预览中的局内操作卡片，分别展示目标金钱与恢复勾选、添加道具及剩余额度。截图仅保留相关卡片；没有连接游戏或点击“保存修改”。
 - `game-starters-v1.12.0.11.jpg`、`gameplay-v1.12.0.11.jpg`：官方游戏 tag `v1.12.0.11`（commit `e4e9b5383be7c9e171d32a9daaea2658d475c521`）的本机 `app` 模式演示，分别展示初始选择页与第 1 波战斗。临时服务使用独立 origin `http://127.0.0.1:4179/`，从全新 Guest 数据开始，不导入官网或个人存档。该地址仅用于截图，不是离线扩展支持地址。
 
 截图是浏览器实际渲染结果，没有使用生成模型重绘游戏画面。游戏与界面截图包含既有角色、字体和原项目素材；截图不是对这些权利的重新许可，也不代表原团队认可本扩展。原项目的 [素材贡献名单](https://github.com/pagefaultgames/pokerogue/blob/v1.12.0.11/CREDITS.md) 与前述素材权利限制继续适用。请勿将这些截图统一标注为项目自有代码许可证、MIT 或公共领域。
