@@ -49,7 +49,7 @@
 
 ## 扩展版本与入口维护
 
-当前扩展版本 `0.4.4`。本版修正无尽金额范围、展示动态道具上限并整理开发文件与历史归档，未扩大游戏支持范围。调整发布版本时，同步：
+当前扩展版本 `1.0.0`。界面与仓库首页统一为训练家手册风格，支持范围仍为游戏 `1.12.0.10` 和 `1.12.0.11`。调整发布版本时，同步：
 
 - `manifest.json` 的 `version`；
 - `package.json` 的 `version`；
@@ -68,7 +68,7 @@
 
 ## UI 设计依据
 
-界面使用深蓝像素菜单框、淡金主按钮和青绿状态色。局内操作和永久资源分页，高级设置默认折叠，所有账号操作先展示修改内容。参考 [GitHub Primer 的分段导航原则](https://primer.style/product/components/segmented-control/)，键盘导航按 [WAI-ARIA Tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)；表单保留可见标签和状态提示。洛托姆像素精灵图、手绘点阵图标和 OFL-1.1 中文字体均随扩展本地加载，见 [素材说明](ASSETS.md)，没有引入第三方 UI 库。
+界面使用深蓝像素菜单框、淡金主按钮和青绿状态色。局内、收藏、扭蛋和备份分别以金、紫、绿、青突出页签和标题；金额输入与全恢复优先展示，对局详情和解释性文字默认折叠。局内操作和永久资源分页，所有账号操作先展示修改内容。参考 [GitHub Primer 的分段导航原则](https://primer.style/product/components/segmented-control/)，键盘导航按 [WAI-ARIA Tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/)；表单保留可见标签和状态提示。洛托姆像素精灵图、手绘点阵图标和 OFL-1.1 中文字体均随扩展本地加载，见 [素材说明](ASSETS.md)，没有引入第三方 UI 库。
 
 ## 0.4.1 界面验证
 

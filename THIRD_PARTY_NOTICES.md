@@ -1,10 +1,10 @@
 # Third-Party Notices
 
-This notice applies to RogueSave version 0.4.4.
+This notice applies to RogueSave version 1.0.0.
 
 ## Bundled code and assets
 
-RogueSave 0.4.4 is implemented with browser Web APIs and Node.js built-in modules. It does not bundle third-party JavaScript packages or PokéRogue application code. It includes two unmodified Rotom images and an unmodified egg icon atlas from the PokéRogue asset repository, hand-written pixel-style SVG icons, and Fusion Pixel Font (12px proportional Simplified Chinese, release 2026.09.25, SIL Open Font License 1.1). Font copyright and license notices are included in `sidepanel/assets/fonts/OFL.txt` and `sidepanel/assets/fonts/LICENSES/`.
+RogueSave 1.0.0 is implemented with browser Web APIs and Node.js built-in modules. It does not bundle third-party JavaScript packages or PokéRogue application code. It includes two unmodified Rotom images and an unmodified egg icon atlas from the PokéRogue asset repository, hand-written pixel-style SVG icons, and Fusion Pixel Font (12px proportional Simplified Chinese, release 2026.09.25, SIL Open Font License 1.1). Font copyright and license notices are included in `sidepanel/assets/fonts/OFL.txt` and `sidepanel/assets/fonts/LICENSES/`.
 
 Rotom asset source: `pagefaultgames/pokerogue-assets`, commit `056a1f408f26a3be4fef243f7462cb43608c7928`, files `images/pokemon/icons/4/479.png` and `images/pokemon/479.png`. These are provided by the PokéRogue project and its asset contributors; original Pokémon character rights belong to their respective owners. The upstream README declares CC-BY-NC-SA-4.0 for licensable and applicable assets unless otherwise noted, with REUSE exceptions. Original assets marked LicenseRef-FAIR-USE do not convey a re-license of the original rights. Relevant upstream license and fair-use explanation texts are retained in `sidepanel/assets/licenses/`; their inclusion is not an independent character or trademark authorization. These images must not be blanket-licensed as MIT or public domain. Provenance and publication limitations are documented in `docs/ASSETS.md`.
 

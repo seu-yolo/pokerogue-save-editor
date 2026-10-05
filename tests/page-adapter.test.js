@@ -622,7 +622,7 @@ function accountFixture({ save = "success" } = {}) {
     forms: [{ formName: "基础" }, { formName: "不可选", isStarterSelectable: false }],
     getFullUnlocksData: () => id === 1 ? 1n | 2n | 4n | 16n | 32n | 64n | 128n | 256n : 1n | 2n | 4n | 16n | 128n,
   });
-  window.__ROGUESAVE_GAME_EXPORTS_V1__ = { version: "1.12.0.10", adapterVersion: "0.4.4",
+  window.__ROGUESAVE_GAME_EXPORTS_V1__ = { version: "1.12.0.10", adapterVersion: "1.0.0",
     registry: { getSpecies: species, getAllStarters: () => [1, 2] },
     eggMoves: { 1: [10, 20, 30, 40], 2: [10, 20, 30, 40] },
     moves: Object.fromEntries([10, 20, 30, 40].map(id => [id, { id, power: 100, name: `招式${id}` }])),
@@ -681,7 +681,7 @@ class AddedModifier {
 
 function itemFixture(options = {}) {
   const fixture = makeScene(options); bindScene(fixture.scene);
-  window.__ROGUESAVE_GAME_EXPORTS_V1__ = { version: "1.12.0.10", adapterVersion: "0.4.4", itemLookup: id => ["SHINY_CHARM", "LEFTOVERS"].includes(id) ? () => {
+  window.__ROGUESAVE_GAME_EXPORTS_V1__ = { version: "1.12.0.10", adapterVersion: "1.0.0", itemLookup: id => ["SHINY_CHARM", "LEFTOVERS"].includes(id) ? () => {
     const type = { id, testOfficial: true, name: id === "SHINY_CHARM" ? "闪耀护符" : "吃剩的东西", getDescription: () => "官方道具说明",
       newModifier: pokemon => new AddedModifier(type, pokemon?.id ?? null) };
     return type;
@@ -796,7 +796,7 @@ test("collection discovers data behind the running BattleScene without following
   assert.equal(result.species[0].abilities[0].name, "特性1", "move array must never replace abilities");
   assert.deepEqual(result.species[0].eggMoves.map(row => row.name), ["招式10", "招式20", "招式30", "招式40"]);
   assert.equal(fetched.some(url => url.endsWith("must-not-run.js")), false);
-  assert.equal(window.__ROGUESAVE_GAME_EXPORTS_V1__.adapterVersion, "0.4.4");
+  assert.equal(window.__ROGUESAVE_GAME_EXPORTS_V1__.adapterVersion, "1.0.0");
 });
 
 test("collection never imports a BattleScene chunk before that scene is instantiated", async () => {
@@ -1001,6 +1001,18 @@ test("account reinitialization during save is never overwritten by old account r
   const { result } = await accountCommit([{ type: "setVoucher", key: "0", value: 300 }]);
   assert.equal(result.code, "UNCERTAIN");
   assert.equal(fixture.scene.gameData.voucherCounts[0], 99);
+});
+
+test("successful account egg saves return the version and authoritative JSON required by the background", async () => {
+  const fixture = accountFixture();
+  const { result } = await accountCommit([{ type: "addLegendaryEggs", source: "shiny", count: 2 }]);
+  assert.equal(result.ok, true, result.message);
+  assert.equal(result.code, "VERIFIED");
+  assert.equal(result.status, "verified");
+  assert.equal(result.adapterVersion, "1.0.0");
+  assert.deepEqual(JSON.parse(result.afterSystemJson), result.afterSystem);
+  assert.equal(result.afterSystem.eggs.length, 2);
+  assert.equal(fixture.saves(), 1);
 });
 
 test("account egg saves retain unknown contents and restore cache on failed persistence", async () => {

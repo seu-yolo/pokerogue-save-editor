@@ -94,7 +94,7 @@ function inspection({
 } = {}) {
   return {
     ok: true,
-    adapterVersion: "0.4.4",
+    adapterVersion: "1.0.0",
     pageInstanceId,
     model: {
       readOnly,
@@ -144,7 +144,7 @@ function mockAccountFlow({ commitResult = null, commitThrows = false } = {}) {
       assert.equal(storageData[BACKUP_KEY][0].kind, "account", "backup must exist before account persistence");
       assert.deepEqual(storageData[BACKUP_KEY][0].beforeSystem, system);
       if (commitThrows) throw new Error("page disconnected");
-      return commitResult || { ok: true, code: "VERIFIED", status: "verified", adapterVersion: "0.4.4",
+      return commitResult || { ok: true, code: "VERIFIED", status: "verified", adapterVersion: "1.0.0",
         afterSystem: { ...system, voucherCounts: { 0: 300 } }, message: "saved" };
     }
     throw new Error(`unexpected ${request.command}`);
@@ -174,7 +174,7 @@ test("account JSON transport retains nullable fields across page IPC without exp
     assert.equal(request.command, "account-commit");
     assert.deepEqual(JSON.parse(request.payload.expectedSystemJson), fixture.system);
     assert.deepEqual(storageData[BACKUP_KEY][0].beforeSystem, fixture.system);
-    return { ok: true, code: "VERIFIED", status: "verified", adapterVersion: "0.4.4", afterSystem: {},
+    return { ok: true, code: "VERIFIED", status: "verified", adapterVersion: "1.0.0", afterSystem: {},
       afterSystemJson: JSON.stringify({ ...fixture.system, voucherCounts: { 0: 300 } }), message: "saved" };
   };
   const result = await send({ type: "ACCOUNT_COMMIT", clientRequestId: nextClientRequestId(), operations,
@@ -284,7 +284,7 @@ test("account legendary egg requests are validated and forwarded without species
       ok: true,
       code: "VERIFIED",
       status: "verified",
-      adapterVersion: "0.4.4",
+      adapterVersion: "1.0.0",
       afterSystem: { eggs: [{ id: 1 }, { id: 2 }] },
       message: "saved",
       account: { eggCount: 2, maxEggs: 99, added: 2, source: "shiny", hatchWaves: 100 },
@@ -375,7 +375,7 @@ test("the global write lock rejects a second transaction before any await", asyn
     code: "VERIFIED",
     status: "verified",
     message: "saved",
-    adapterVersion: "0.4.4",
+    adapterVersion: "1.0.0",
     slotId: 0,
     waveIndex: 188,
     afterHash: HASH_D,
@@ -393,7 +393,7 @@ test("an audit quota failure cannot overwrite a verified page result", async () 
       code: "VERIFIED",
       status: "verified",
       message: "页面已完整验证",
-      adapterVersion: "0.4.4",
+      adapterVersion: "1.0.0",
       slotId: 0,
       waveIndex: 188,
       afterHash: HASH_D,
@@ -423,7 +423,7 @@ test("a contradictory page success response is normalized to uncertain", async (
       ok: true,
       code: "VERIFIED",
       message: "missing verified status",
-      adapterVersion: "0.4.4",
+      adapterVersion: "1.0.0",
       slotId: 0,
       waveIndex: 188,
       afterHash: HASH_D,
@@ -450,14 +450,14 @@ test("incomplete or mixed page write results are normalized to uncertain", async
     {},
     { ok: false },
     { ok: false, code: "FAILED" },
-    { ok: false, code: "FUTURE_FAILURE", status: "failed", message: "unknown", adapterVersion: "0.4.4" },
+    { ok: false, code: "FUTURE_FAILURE", status: "failed", message: "unknown", adapterVersion: "1.0.0" },
     { ok: true, code: "VERIFIED", status: "uncertain", message: "mixed signals" },
     {
       ok: true,
       code: "VERIFIED",
       status: "verified",
       message: "missing hashes",
-      adapterVersion: "0.4.4",
+      adapterVersion: "1.0.0",
       slotId: 0,
       waveIndex: 188,
     },
@@ -512,7 +512,7 @@ test("undo forwards the original operation list and full backup hash", async () 
         code: "VERIFIED",
         status: "verified",
         message: "undone",
-        adapterVersion: "0.4.4",
+        adapterVersion: "1.0.0",
         slotId: 0,
         waveIndex: 188,
         afterHash: HASH_E,
@@ -615,7 +615,7 @@ test("a contradictory undo success never marks its target rolled back", async ()
       ok: true,
       code: "VERIFIED",
       message: "missing verified status",
-      adapterVersion: "0.4.4",
+      adapterVersion: "1.0.0",
       slotId: 0,
       waveIndex: 188,
       afterHash: HASH_E,
@@ -687,7 +687,7 @@ test("an unresolved audit record blocks writes until a successful manual refresh
         code: "VERIFIED",
         status: "verified",
         message: "saved",
-        adapterVersion: "0.4.4",
+        adapterVersion: "1.0.0",
         slotId: 0,
         waveIndex: 188,
         afterHash: HASH_D,
@@ -1188,7 +1188,7 @@ test("a consumed client request id cannot replay even after its terminal audit i
       code: "VERIFIED",
       status: "verified",
       message: "saved",
-      adapterVersion: "0.4.4",
+      adapterVersion: "1.0.0",
       slotId: 0,
       waveIndex: 188,
       afterHash: HASH_D,

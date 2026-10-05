@@ -304,13 +304,13 @@ function syncWriteAccessUi() {
   if (locked) {
     setConnection(
       "warning",
-      "结果待确认，写入已安全锁定",
-      "请导出对应事务 JSON；只有手动刷新并重新读取当前状态后才会解除锁定。",
+      "先核对上一次保存结果",
+      "点顶部刷新核对。核对通过后可继续修改；记录可在备份页导出。",
     );
   } else {
     setConnection(
       state.model.readOnly ? "warning" : "safe",
-      state.model.readOnly ? "找到对局了，目前只能查看" : "找到你的对局了",
+      state.model.readOnly ? "已连接，先查看当前状态" : "对局已连接，可以补给了",
       `存档 ${state.model.run.displaySlot} · 第 ${state.model.run.waveIndex} 波${state.model.readOnly ? ` · ${state.model.readOnlyReason || "等回到可修改的阶段，再点刷新。"}` : ""}`,
     );
   }

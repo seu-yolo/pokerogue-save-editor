@@ -22,6 +22,7 @@ export function createWorkflows(api) {
 
   function switchPage(tab) {
     ui.tab = tab;
+    $(".app-shell").dataset.page = tab;
     for (const panel of document.querySelectorAll("[data-view]")) panel.hidden = panel.dataset.view !== tab;
     for (const button of document.querySelectorAll("[data-tab]")) {
       const selected = button.dataset.tab === tab;
@@ -30,6 +31,7 @@ export function createWorkflows(api) {
     $(".sticky-actions").hidden = tab !== "run";
     $("#preview-card").hidden = tab !== "run" || !state.preview;
     closePreview();
+    window.scrollTo({ top: 0, behavior: "instant" });
     if (tab === "collection" && state.model && !ui.catalog) void loadCollection();
   }
 
@@ -191,7 +193,7 @@ export function createWorkflows(api) {
     const item = ui.items.find(row => row.id === $("#item-select").value);
     const limit = itemAvailability(item);
     const locked = !state.model || state.model.readOnly || Boolean(state.safetyLock) || state.busy;
-    $("#item-description").textContent = item?.description || "选择道具，加入本次修改。保存时会检查层数上限。";
+    $("#item-description").textContent = item?.description || "选个道具，给队伍补点装备。";
     $("#item-limit").textContent = !item ? "加载列表后，会显示游戏里的实际层数上限。" : !limit
       ? "暂时无法确定可添加数量。请检查现有道具层数，或重新加载列表。"
       : `当前 ${limit.currentStackCount} / 上限 ${limit.maxStackCount} 层${limit.current !== limit.currentStackCount ? ` · 已改为 ${limit.current} 层` : ""}${limit.virtualStackCount ? ` · 临时 ${limit.virtualStackCount} 层` : ""}${limit.queued ? ` · 待添加 ${limit.queued} 层` : ""} · ${limit.remaining ? `还能添加 ${limit.remaining} 层` : "已达到上限"}`;

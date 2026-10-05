@@ -3,7 +3,7 @@
  * it in PokéRogue's MAIN world, where the live game objects exist.
  */
 export async function pokeroguePageCommand(request) {
-  const ADAPTER_VERSION = "0.4.4";
+  const ADAPTER_VERSION = "1.0.0";
   const SUPPORTED_VERSIONS = ["1.12.0.10", "1.12.0.11"];
   const SCENE_CACHE_KEY = "__ROGUESAVE_SCENE_V1__";
   const PAGE_INSTANCE_KEY = "__ROGUESAVE_PAGE_INSTANCE_V1__";
@@ -3413,10 +3413,12 @@ export async function pokeroguePageCommand(request) {
       if (scene.gameData !== gameData || !transactionGuardMatches(scene, guard)
         || generated.some(egg => !gameData.eggs.includes(egg))) throw new Error("保存期间游戏或蛋列表发生变化");
 
+      const afterSystem = typeof gameData.getSystemSaveData === "function" ? systemSnapshot(scene) : null;
       const response = {
         ok: true,
         code: "VERIFIED",
         status: "verified",
+        adapterVersion: ADAPTER_VERSION,
         message: `已添加 ${count} 枚随机传说蛋；内容将在正常孵化时揭晓`,
         account: {
           eggCount: gameData.eggs.length,
@@ -3425,7 +3427,7 @@ export async function pokeroguePageCommand(request) {
           source,
           hatchWaves: 100,
         },
-        ...(typeof gameData.getSystemSaveData === "function" ? { afterSystem: systemSnapshot(scene) } : {}),
+        ...(afterSystem ? { afterSystem, afterSystemJson: JSON.stringify(afterSystem) } : {}),
       };
       window[TX_RESULTS_KEY].set(txId, response);
       while (window[TX_RESULTS_KEY].size > 20) {

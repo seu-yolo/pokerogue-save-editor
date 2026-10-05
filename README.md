@@ -1,12 +1,14 @@
 <div align="center">
   <img src="docs/assets/readme-banner.svg" width="960" alt="Rotom Pocket 训练家手册：给你的 PokéRogue 冒险搭把手">
   <h1><img src="sidepanel/assets/rotom-icon.png" width="48" alt="洛托姆像素头像"> 洛托姆口袋</h1>
-  <p>一个住在 Chrome 侧栏里的非官方 PokéRogue 小帮手。</p>
+  <p>一个住在 Chrome 侧栏里的 PokéRogue 小帮手。</p>
   <p><a href="#游戏">认识游戏</a> · <a href="#功能">打开口袋</a> · <a href="#安装">安装扩展</a> · <a href="#上手">第一次使用</a> · <a href="#排错">遇到问题</a></p>
-  <p><sub>测试版 0.4.4 · Chrome 116+ · 适配游戏 1.12.0.10 / 1.12.0.11</sub></p>
+  <p><sub>v1.0.0 · Chrome 116+ · 适配游戏 1.12.0.10 / 1.12.0.11</sub></p>
 </div>
 
 <a id="游戏"></a>
+
+<img src="docs/assets/readme-divider.svg" width="960" alt="">
 
 ## 01 · 冒险起点：宝可梦肉鸽
 
@@ -34,9 +36,11 @@
 
 <a id="功能"></a>
 
+<img src="docs/assets/readme-divider.svg" width="960" alt="">
+
 ## 02 · 打开洛托姆的口袋
 
-洛托姆口袋是一个非官方 Chrome 侧栏扩展。不用打开开发者工具，就能调整当前对局的资源、解锁喜欢的初始伙伴，或补充扭蛋资源；不绑定某一局或某个波数。
+打开侧栏，就能为当前队伍补给，解锁喜欢的初始伙伴，或补充扭蛋资源。各种波数和存档都可使用，不用打开开发者工具。
 
 <table>
   <tr>
@@ -71,11 +75,11 @@
 
 ### <img src="sidepanel/assets/poke-ball.svg" width="24" alt=""> 局内补给 · 让队伍喘口气
 
-需要补给时，打开“局内”页就能调整。下面用模拟数据演示，没有修改实际存档。
+需要补给时，打开“局内”页就能调整。
 
 <table>
   <tr>
-    <td width="50%" valign="top"><a href="docs/assets/usage-run-money-v0.4.4.jpg"><img src="docs/assets/usage-run-money-v0.4.4.jpg" width="380" alt="局内模拟演示：金钱填为 300000，勾选 HP 全满、清除异常和 PP 全满"></a></td>
+    <td width="50%" valign="top"><a href="docs/assets/usage-run-money-v1.0.0.jpg"><img src="docs/assets/usage-run-money-v1.0.0.jpg" width="380" alt="局内模拟演示：金钱填为 300000，勾选 HP 全满、清除异常和 PP 全满"></a></td>
     <td valign="top">
       <h4>金钱自己填，队伍一起恢复</h4>
       <p>比如想把金钱设成 300000，就直接填入这个数。填的是最终总额。</p>
@@ -83,7 +87,7 @@
     </td>
   </tr>
   <tr>
-    <td valign="top"><a href="docs/assets/usage-run-items-v0.4.4.jpg"><img src="docs/assets/usage-run-items-v0.4.4.jpg" width="320" alt="局内模拟演示：护符已有 2 层，上限 4 层，待添加 1 层，还能添加 1 层"></a></td>
+    <td valign="top"><a href="docs/assets/usage-run-items-v1.0.0.jpg"><img src="docs/assets/usage-run-items-v1.0.0.jpg" width="320" alt="局内模拟演示：护符已有 2 层，上限 4 层，待添加 1 层，还能添加 1 层"></a></td>
     <td valign="top">
       <h4>补充道具，看清剩余额度</h4>
       <p>展开“添加道具”，点“查看道具”，选择道具和数量，再点“加入本次修改”。持有道具还要选择宝可梦。</p>
@@ -99,7 +103,7 @@
 
 ### <img src="sidepanel/assets/sparkle.svg" width="24" alt=""> 永久收藏 · 就决定是你了！
 
-在“收藏”搜索名字或编号，选中伙伴，再挑选想解锁的内容。已有收藏会保留；可选项以当前游戏为准，不会把它直接塞进正在游玩的队伍。
+在“收藏”搜索名字或编号，选中伙伴，再挑选外观、性格和其他配置。已有收藏会保留，新增内容在下次开局时使用。
 
 <details>
 <summary>展开收藏与扭蛋界面截图</summary>
@@ -110,26 +114,28 @@
     <th>扭蛋：补充资源，保留惊喜</th>
   </tr>
   <tr>
-    <td valign="top"><img src="docs/assets/usage-collection-v0.4.4.jpg" width="360" alt="收藏页：搜索宝可梦，选择闪光外观、形态、性格、蛋招式和特性"></td>
-    <td valign="top"><img src="docs/assets/usage-gacha-v0.4.4.jpg" width="360" alt="扭蛋页：填写抽奖券总数，选择随机传说蛋来源和数量"></td>
+    <td valign="top"><img src="docs/assets/usage-collection-v1.0.0.jpg" width="360" alt="收藏页：搜索宝可梦，选择闪光外观、形态、性格、蛋招式和特性"></td>
+    <td valign="top"><img src="docs/assets/usage-gacha-v1.0.0.jpg" width="360" alt="扭蛋页：填写抽奖券总数，选择随机传说蛋来源和数量"></td>
   </tr>
 </table>
 
 </details>
 
-以上工具截图均为真实界面的模拟数据预览，不是官网账号操作记录，也不代表图中宝可梦配置在游戏中一定可用。截图没有执行保存。
+<p align="center"><sub>工具截图使用合成数据展示交互，未连接游戏或执行保存；可选配置以游戏图鉴为准。</sub></p>
 
 <a id="扭蛋"></a>
 
 ### 🥚 扭蛋小站 · 等一个破壳的惊喜
 
-随机蛋不会提前揭晓物种，也不能指定蛋内宝可梦；每枚传说蛋仍需完成 100 波孵化时间。**当前测试版添加传说蛋存在保存结果可能显示“待确认”的已知问题，暂不建议在官网账号使用该项。** 详见 [问题与恢复说明](docs/USAGE.md#保存失败或结果待确认)。
+选传说 UP、蛋招式 UP 或闪光 UP，添加由游戏生成的随机传说蛋。每枚蛋需要完成 100 波孵化时间，内容留到破壳时揭晓。想直接解锁指定伙伴，可以用上面的“收藏”。
 
 <a id="安装"></a>
 
+<img src="docs/assets/readme-divider.svg" width="960" alt="">
+
 ## 03 · 把洛托姆装进口袋
 
-当前为 `0.4.4` 测试版，适配 PokéRogue `1.12.0.10` 和 `1.12.0.11`，需要 Chrome `116` 或更新版本。游戏更新后可能需要重新适配；未知版本会保持只读。
+扩展版本为 `1.0.0`，适配 PokéRogue `1.12.0.10` 和 `1.12.0.11`，需要 Chrome `116` 或更新版本。游戏支持范围会随适配更新；未适配版本可查看和导出备份。
 
 目前尚未发布 [Release 安装包](https://github.com/seu-yolo/rotom-pocket/releases)。现在可从源码打包；需要 [Node.js 20+](https://nodejs.org/) 和 Git，不需要 `npm install`：
 
@@ -155,6 +161,8 @@ npm run pack
 
 <a id="上手"></a>
 
+<img src="docs/assets/readme-divider.svg" width="960" alt="">
+
 ## 04 · 第一次使用：先预览，再保存
 
 1. 只保留一个游戏标签页，进入要修改的对局，停在等待选择招式的界面。
@@ -164,11 +172,13 @@ npm run pack
 
 收藏和券数也先预览再确认。解锁的初始伙伴在下次开局时使用；金钱与券数填的是目标总数，不是额外增加的数量。道具界面会显示当前层数、游戏中的实际上限和剩余额度；持有道具按所选宝可梦分别计算。
 
-切换存档后，点顶部“↻ 刷新”重新连接。这个按钮只刷新洛托姆口袋，不会刷新游戏页，也不会加载新版扩展代码。
+切换存档后，点顶部“↻ 刷新”重新连接。游戏页会保持原样；更新扩展代码则要去扩展管理页点“重新加载”。
 
 更多操作与范围见 [使用说明](docs/USAGE.md)。想在独立离线环境测试，请看 [离线版说明](docs/OFFLINE_TESTING.md)；本仓库不包含游戏本体。
 
 <a id="排错"></a>
+
+<img src="docs/assets/readme-divider.svg" width="960" alt="">
 
 ## 05 · 洛托姆卡住了？
 
@@ -182,21 +192,21 @@ npm run pack
 <details>
 <summary>看到“结果待确认”</summary>
 
-先停下，不要反复保存。按提示刷新核对；必要时关闭原游戏标签页，新开同一账号和存档。不要通过删除记录、卸载扩展或绕过检查来解除限制。[详细处理方法](docs/USAGE.md#保存失败或结果待确认)
+先暂停修改，按提示刷新核对；必要时关闭原游戏标签页，新开同一账号和存档。保留本机记录，不要重复保存或卸载扩展来解锁。[详细处理方法](docs/USAGE.md#保存失败或结果待确认)
 
 </details>
 
 <details>
 <summary>备份能帮我恢复官网存档吗？</summary>
 
-官网正式版目前没有账号／对局的菜单导入入口，下载备份不等于能在官网一键回档。局内撤销也有状态条件；收藏、券和蛋暂不支持一键撤销。请在修改永久资源前读一下 [备份与撤销的区别](docs/USAGE.md#备份与撤销)。
+兼容离线版可在“数据管理”中导入原生备份，官网正式版目前没有这个入口。局内撤销需要停留在修改后的同一状态；收藏、券和蛋暂不支持一键撤销。[备份与撤销的区别](docs/USAGE.md#备份与撤销)。
 
 </details>
 
 <details>
 <summary>游戏更新后不能修改</summary>
 
-修改器不是通用存档格式转换器，也不保证未来版本兼容。请等待适配，不要强行修改版本检查。
+游戏更新后需要核对新的数据结构与保存接口。先使用查看和导出功能，等适配新版后再修改。
 
 </details>
 
@@ -208,9 +218,9 @@ npm run pack
 
 ## 非官方声明与致谢
 
-本项目与 Pagefault Games、PokéRogue 团队、Nintendo、Game Freak 或 The Pokémon Company 没有隶属或合作关系。请只操作你有权控制的数据；修改存档有风险，本项目不保证账号安全或任意情况下都能恢复。
+本项目是非官方工具，与 Pagefault Games、PokéRogue 团队、Nintendo、Game Freak 或 The Pokémon Company 没有隶属或合作关系。请只操作你有权控制的数据，修改前留存备份。修改有存档及账号风险，备份恢复范围见 [使用说明](docs/USAGE.md#备份与撤销)。
 
-扩展只在目标游戏页工作，本机保存修改记录，不读取 Cookie、密码或浏览历史，也不会把存档上传到第三方服务器。账号保存仍通过游戏自身接口完成，不等于工具能独立核实服务器最终状态。
+扩展在目标游戏页工作，修改记录保存在本机。不读取 Cookie、密码或浏览历史，也不把存档上传到第三方服务器。账号通过游戏自身接口保存；保存异常时，请按提示重新载入游戏核对结果。
 
 感谢 PokéRogue 与社区的作品，以及 [Fusion Pixel Font](https://github.com/TakWolf/fusion-pixel-font) 的中文像素字体。自有代码许可证尚待确定，第三方图片、字体和游戏截图不属于本项目自有代码许可；来源与权利说明见 [素材说明](docs/ASSETS.md) 和 [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md)。
 

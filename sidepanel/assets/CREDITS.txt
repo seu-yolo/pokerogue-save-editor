@@ -1,4 +1,4 @@
-Rotom Pocket / RogueSave 0.4.4 — local UI assets
+Rotom Pocket / RogueSave 1.0.0 — local UI assets
 
 Rotom icon and sprite sheet:
 Source repository: https://github.com/pagefaultgames/pokerogue-assets

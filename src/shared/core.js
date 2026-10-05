@@ -1,4 +1,4 @@
-export const EDITOR_VERSION = "0.4.4";
+export const EDITOR_VERSION = "1.0.0";
 export const SUPPORTED_GAME_VERSIONS = Object.freeze(["1.12.0.10", "1.12.0.11"]);
 // BattleScene.addMoney uses this same cap, including in Endless mode.
 export const MAX_MONEY = Number.MAX_SAFE_INTEGER;

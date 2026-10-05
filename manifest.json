@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "洛托姆口袋 · RogueSave",
+  "name": "洛托姆口袋 · Rotom Pocket",
   "short_name": "洛托姆口袋",
-  "version": "0.4.4",
+  "version": "1.0.0",
   "minimum_chrome_version": "116",
   "description": "管理 PokéRogue 当前对局、永久宝可梦收藏、抽奖券与随机传说蛋。",
   "permissions": [
