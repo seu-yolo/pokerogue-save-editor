@@ -1,0 +1,21 @@
+{
+  "name": "rotom-pocket",
+  "version": "0.4.4",
+  "private": true,
+  "type": "module",
+  "description": "A local PokéRogue save editor Chrome extension.",
+  "scripts": {
+    "test": "node --test",
+    "test:core": "node --test tests/core.test.js",
+    "test:game": "node --test tests/page-adapter.test.js",
+    "test:background": "node --test tests/background.test.js",
+    "test:static": "node --test tests/static.test.js",
+    "check": "node scripts/check.mjs",
+    "preview:ui": "node scripts/ui-preview.mjs",
+    "pack": "node scripts/package-extension.mjs",
+    "pack:offline": "node scripts/package-extension.mjs --offline"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

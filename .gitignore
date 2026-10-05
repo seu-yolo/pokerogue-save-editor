@@ -1,0 +1,22 @@
+# Local development and build output
+.DS_Store
+node_modules/
+/.cache/
+/dist/
+*.log
+
+# Separately installed game and personal data
+/game/
+/save/
+/downloads/
+*.prsv
+*.sav
+*.srm
+roguesave-slot*.json
+sessionData*.json
+userData*.json
+
+# Credentials (only non-secret example files may be committed)
+.env
+.env.*
+!.env.example

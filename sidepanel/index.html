@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <title>洛托姆口袋 · RogueSave</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand-mark" aria-hidden="true"><img src="assets/rotom-icon.png" alt="" width="40" height="30"></div>
+        <div>
+          <h1>洛托姆口袋</h1>
+          <p>给你的冒险搭把手 <span class="brand-alias">/ RogueSave</span></p>
+        </div>
+        <div class="connection-actions">
+          <span id="connection-chip" class="chip chip-neutral">连接中</span>
+          <button id="pocket-refresh-button" class="mini-button" type="button" title="重新连接并核对状态，不会刷新游戏页（出错了多刷新一下）" aria-label="刷新洛托姆口袋">↻ 刷新</button>
+        </div>
+      </header>
+
+      <section id="connection-card" class="card connection-card" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <div>
+          <strong id="connection-title">找找你的对局…</strong>
+          <p id="connection-message">打开宝可梦肉鸽，进入想修改的存档就好。</p>
+        </div>
+      </section>
+
+      <nav class="page-tabs" role="tablist" aria-label="修改器功能">
+        <button id="tab-run" type="button" role="tab" aria-selected="true" aria-controls="view-run" data-tab="run"><img src="assets/poke-ball.svg" alt="" width="20" height="20">局内</button>
+        <button id="tab-collection" type="button" role="tab" aria-selected="false" aria-controls="view-collection" tabindex="-1" data-tab="collection"><img src="assets/sparkle.svg" alt="" width="20" height="20">收藏</button>
+        <button id="tab-gacha" type="button" role="tab" aria-selected="false" aria-controls="view-gacha" tabindex="-1" data-tab="gacha"><span class="egg-icon" aria-hidden="true"><img src="assets/egg-icons.png" alt="" width="64" height="15"></span>扭蛋</button>
+        <button id="tab-backup" type="button" role="tab" aria-selected="false" aria-controls="view-backup" tabindex="-1" data-tab="backup"><img src="assets/satchel.svg" alt="" width="20" height="20">备份</button>
+      </nav>
+
+      <main id="editor" hidden>
+        <section class="card run-card" data-view="run">
+          <div class="section-heading compact">
+            <div>
+              <span class="eyebrow">当前活动存档</span>
+              <h2 id="run-title">存档</h2>
+            </div>
+            <button id="refresh-button" class="icon-button" type="button" title="重新读取当前状态" aria-label="重新读取当前状态">↻</button>
+          </div>
+          <div class="run-grid">
+            <div><span>波数</span><strong id="run-wave">—</strong></div>
+            <div><span>模式</span><strong id="run-mode">—</strong></div>
+            <div><span>版本</span><strong id="run-version">—</strong></div>
+            <div><span>回合</span><strong id="run-turn">—</strong></div>
+          </div>
+          <details class="context-details"><summary>对局详情</summary><p id="run-seed" class="muted mono"></p></details>
+          <div id="read-only-warning" class="notice notice-warning" hidden></div>
+          <div class="toolbar compact-toolbar">
+            <button id="undo-button" class="button button-secondary" type="button" disabled>撤销上一次</button>
+          </div>
+        </section>
+
+        <section id="view-collection" role="tabpanel" aria-labelledby="tab-collection" data-view="collection" hidden>
+          <div class="page-heading illustrated-heading"><div><span class="eyebrow">你的初始伙伴</span><h2>就决定是你了！</h2><p>解锁你喜欢的宝可梦（支持定制）</p></div><span class="rotom-sprite" aria-hidden="true"><img src="assets/rotom-sprite-sheet.png" alt="" width="261" height="261"></span></div>
+          <label class="field"><span>搜索宝可梦</span><input id="species-search" type="search" placeholder="名称或编号，例如：盖欧卡 / 382" autocomplete="off"></label>
+          <div class="filter-bar"><select id="species-filter" aria-label="筛选宝可梦"><option value="all">全部</option><option value="missing">未解锁</option><option value="owned">已解锁</option><option value="legendary">传说与幻兽</option></select><button id="collection-load-button" type="button" class="mini-button">刷新图鉴</button></div>
+          <p id="collection-status" class="section-note" role="status">进入对局后，即可加载图鉴。</p>
+          <div id="species-results" class="search-results" aria-label="宝可梦搜索结果"></div>
+          <form id="collection-form" class="card" hidden>
+            <div class="section-heading"><div><span class="eyebrow">永久初始宝可梦</span><h2 id="species-title">宝可梦</h2></div><span id="species-owned" class="chip"></span></div>
+            <label class="field"><span>闪光外观</span><select id="starter-shiny"><option value="keep">保留已有外观（未解锁则新增普通）</option><option value="normal">普通外观</option><option value="0">黄闪 · 1 级</option><option value="1">蓝闪 · 2 级</option><option value="2">红闪 · 3 级</option></select></label>
+            <label class="field"><span>初始形态</span><select id="starter-form"></select></label>
+            <details class="config-group"><summary>性格 <span>显示能力增减</span></summary><div id="starter-natures" class="choice-grid"></div></details>
+            <details class="config-group" open><summary>蛋招式 <span>解锁后开局可选</span></summary><div id="starter-egg-moves" class="choice-list"></div></details>
+            <details class="config-group"><summary>特性 <span>普通／隐藏</span></summary><div id="starter-abilities" class="choice-list"></div></details>
+            <p class="section-note">勾选的内容会在下次开局时可选。当前队伍招式不变，也不会增加糖果或通关次数。</p>
+            <button id="starter-preview-button" class="button button-primary full-width" type="submit">查看解锁内容</button>
+          </form>
+        </section>
+
+        <section id="view-gacha" role="tabpanel" aria-labelledby="tab-gacha" data-view="gacha" hidden>
+          <div class="page-heading illustrated-heading"><div><span class="eyebrow">随机孵化，保留惊喜！</span><h2>扭蛋小站</h2><p>补充抽奖券和传说蛋，孵化后揭晓。</p></div><span class="egg-icon egg-icon--large" aria-hidden="true"><img src="assets/egg-icons.png" alt="" width="64" height="15"></span></div>
+          <form id="voucher-form" class="card"><div class="section-heading"><h2>抽奖券</h2><span class="chip chip-neutral">保存在账号中</span></div><div id="voucher-list" class="voucher-grid"></div><p class="section-note" title="设置最终总数量，不是追加数量；不会抽蛋或消耗抽奖券。">填你想要的数量</p><button id="voucher-preview-button" class="button button-primary full-width" type="submit">预览券数修改</button></form>
+        </section>
+
+        <section class="card encounter-card" data-view="run">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">一次性遭遇</span>
+              <h2>下一次野生宝可梦</h2>
+            </div>
+            <span id="rare-encounter-chip" class="chip chip-neutral">未启用</span>
+          </div>
+          <details class="context-details"><summary>遭遇规则</summary><p class="section-note">按实际地形选择最高非空官方稀有池；Boss 使用 Boss 池。训练家跳过，双打只影响第一只，不预览物种。</p></details>
+          <div id="rare-encounter-note" class="notice notice-neutral">刷新游戏页面会自动取消等待。</div>
+          <div class="toolbar">
+            <button id="rare-encounter-button" class="button button-primary" type="button">等待下一次极稀有遭遇</button>
+          </div>
+        </section>
+
+        <section class="card egg-card" data-view="gacha" hidden>
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">随机孵化</span>
+              <h2>添加随机传说蛋</h2>
+            </div>
+            <span id="egg-count-chip" class="chip chip-neutral">— / 99</span>
+          </div>
+          <p class="section-note egg-intro">传说蛋，内容随机。孵化后揭晓物种、闪光、变体、隐藏特性和蛋招式。</p>
+          <div class="egg-controls">
+            <label class="field">
+              <span>选一台扭蛋机</span>
+              <select id="egg-source">
+                <option value="legendary">传说 UP（50% 当日焦点）</option>
+                <option value="move">蛋招式 UP（稀有蛋招式 1/3）</option>
+                <option value="shiny">闪光 UP（闪光 1/64）</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>数量（1–10）</span>
+              <input id="egg-count" type="number" min="1" max="10" step="1" value="1" inputmode="numeric">
+            </label>
+          </div>
+          <div id="egg-read-only-warning" class="notice notice-warning" hidden></div>
+          <div class="notice notice-safe egg-note">需要走完 100 波孵化时间</div>
+          <div class="toolbar">
+            <button id="egg-add-button" class="button button-primary" type="button">添加传说蛋</button>
+          </div>
+        </section>
+
+        <form id="editor-form" novalidate data-view="run" role="tabpanel" aria-labelledby="tab-run">
+          <div id="view-run" class="page-heading illustrated-heading"><div><span class="eyebrow">冒险补给</span><h2>当前对局</h2><p>补给队伍状态</p></div><img class="spot-art" src="assets/poke-ball.svg" alt="" width="60" height="60"></div>
+          <section class="card">
+            <div class="section-heading">
+              <div>
+                <span class="eyebrow">常用</span>
+                <h2>金钱与恢复</h2>
+              </div>
+              <button id="heal-all" class="mini-button" type="button">一键全恢复</button>
+            </div>
+            <label class="field">
+              <span>金钱</span>
+              <input id="money" name="money" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-describedby="money-help">
+              <small id="money-help">填你想保留的总金额，无尽模式也可用。上限 9,007,199,254,740,991。</small>
+            </label>
+            <div class="subheading">队伍恢复</div>
+            <div class="check-grid">
+              <label class="check-card"><input id="heal-hp" type="checkbox"><span><strong>HP 全满</strong></span></label>
+              <label class="check-card"><input id="heal-status" type="checkbox"><span><strong>清除异常</strong></span></label>
+              <label class="check-card"><input id="heal-pp" type="checkbox"><span><strong>PP 全满</strong></span></label>
+            </div>
+          </section>
+
+          <details class="card details-card" id="add-item-card">
+            <summary><strong>添加道具</strong><span class="summary-hint">永久道具、持有道具</span></summary>
+            <div class="toolbar"><button id="item-load-button" type="button" class="mini-button">查看道具</button></div>
+            <label class="field"><span>搜索道具</span><input id="item-search" type="search" placeholder="名称或 ID"></label>
+            <label class="field"><span>道具</span><select id="item-select" disabled><option value="">先加载上面的道具列表</option></select></label>
+            <p id="item-description" class="section-note" role="status"></p>
+            <p id="item-limit" class="section-note" role="status">加载列表后，会显示游戏里的实际层数上限。</p>
+            <div class="two-column"><label class="field"><span>添加数量</span><input id="item-count" type="number" min="1" step="1" value="1" aria-describedby="item-limit" disabled></label><label class="field"><span>持有者</span><select id="item-owner" disabled></select></label></div>
+            <button id="item-queue-button" class="button button-secondary full-width" type="button" disabled>加入本次修改</button>
+            <div id="item-queue" class="choice-list" aria-live="polite"></div>
+          </details>
+
+          <details class="card details-card">
+            <summary>
+              <span><strong>更多资源修改</strong></span>
+              <span class="summary-hint">名称、精灵球</span>
+            </summary>
+            <label class="field">
+              <span>对局名称</span>
+              <input id="run-name" name="runName" maxlength="40" autocomplete="off">
+            </label>
+            <div class="section-heading nested-heading">
+              <h2>精灵球</h2>
+              <button id="balls-max" class="mini-button" type="button">全部 99</button>
+            </div>
+            <div id="balls-grid" class="balls-grid"></div>
+          </details>
+
+          <details class="card details-card">
+            <summary>
+              <span><strong>队伍进阶修改</strong></span>
+              <span class="summary-hint">亲密度、病毒、进化、IV</span>
+            </summary>
+            <div id="party-list" class="party-list"></div>
+          </details>
+
+          <details class="card details-card">
+            <summary>
+              <span><strong>现有道具层数</strong></span>
+              <span id="modifier-count" class="summary-hint">0 项</span>
+            </summary>
+            <div id="modifier-list" class="modifier-list"></div>
+          </details>
+        </form>
+
+        <section id="preview-card" class="card preview-card" hidden aria-live="polite">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">写入前确认</span>
+              <h2>修改预览</h2>
+            </div>
+            <span id="preview-count" class="chip chip-accent"></span>
+          </div>
+          <div id="preview-list" class="diff-list"></div>
+          <div class="notice notice-safe">
+            保存前会自动留一份本机备份。如果预览后波数、队伍或道具变了，这次修改会暂停；刷新后重新预览即可。
+          </div>
+        </section>
+
+        <section id="view-backup" role="tabpanel" aria-labelledby="tab-backup" data-view="backup" hidden><div class="page-heading illustrated-heading"><div><span class="eyebrow">出发前留一份</span><h2>备份与记录</h2><p>都放在本机，不会上传到第三方。</p></div><img class="spot-art" src="assets/satchel.svg" alt="" width="64" height="64"></div><div class="card"><div class="section-heading"><h2>游戏原生备份</h2></div><div class="toolbar"><button id="native-backup-button" class="button button-secondary" type="button">下载原生 .prsv</button><button id="system-backup-button" class="button button-secondary" type="button">下载账号备份</button></div><p class="section-note">对局和账号要分别备份。官网正式版不能通过菜单导入恢复；兼容的离线版可在游戏“数据管理”中导入。导出文件不等于官网回档保证。</p></div></section>
+        <details class="card details-card history-card" data-view="backup" open hidden>
+          <summary>
+            <span><strong>本机备份与修改记录</strong></span>
+            <span id="backup-count" class="summary-hint">0 份</span>
+          </summary>
+          <div class="toolbar history-tools">
+            <label class="button button-secondary file-button">
+              验证备份 JSON
+              <input id="backup-file" type="file" accept=".json,application/json">
+            </label>
+          </div>
+          <div id="backup-list" class="backup-list"></div>
+          <p class="section-note">这里保留最近 20 份记录，结果待确认的会额外留下。可逐份导出 JSON 用于排查，但 JSON 不能直接导入游戏。</p>
+        </details>
+
+        <p class="privacy-note"><span id="tool-version"></span> · 非官方工具 · 为保留游戏体验请谨慎使用</p>
+      </main>
+
+      <div class="sticky-actions">
+        <span id="action-context" class="action-context">局内修改 · 先预览，再保存</span>
+        <button id="preview-button" class="button button-secondary" type="button" disabled>预览</button>
+        <button id="commit-button" class="button button-primary" type="button" disabled>保存修改</button>
+      </div>
+      <section id="account-preview" class="card account-preview" hidden role="region" aria-label="账号修改预览"><div class="section-heading"><h2>确认账号修改</h2><button id="account-cancel-button" class="icon-button" type="button" aria-label="关闭账号预览">×</button></div><div id="account-preview-list" class="diff-list"></div><p class="section-note">提交前自动备份账号数据；不会改变当前队伍。</p><button id="account-commit-button" class="button button-primary full-width" type="button">确认保存账号</button></section>
+    </div>
+
+    <div id="busy-overlay" class="busy-overlay" hidden>
+      <div class="busy-box"><div class="spinner"></div><strong id="busy-text">处理中…</strong></div>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+Rotom Pocket / RogueSave 0.4.4 — local UI assets
+
+Rotom icon and sprite sheet:
+Source repository: https://github.com/pagefaultgames/pokerogue-assets
+Source commit: 056a1f408f26a3be4fef243f7462cb43608c7928
+rotom-icon.png <- images/pokemon/icons/4/479.png (unchanged)
+rotom-sprite-sheet.png <- images/pokemon/479.png (unchanged; first frame displayed using CSS)
+Asset provider: PokeRogue project and its asset contributors.
+Original Pokemon character rights belong to their respective rights holders.
+
+Upstream README declares CC-BY-NC-SA-4.0 for licensable/applicable assets unless otherwise noted; some original assets use LicenseRef-FAIR-USE. This is not an independent Pokemon character or trademark authorization.
+Upstream notices are retained in licenses/CC-BY-NC-SA-4.0.txt and licenses/LicenseRef-FAIR-USE.txt. Do not blanket-license these assets as MIT or public domain. See docs/ASSETS.md in the source project for details and publication limitations.
+
+Egg icon atlas:
+Source repository: https://github.com/pagefaultgames/pokerogue-assets
+Source commit: 909b43612324622608023b3beb2f24f4ef159c1d
+egg-icons.png <- images/egg/egg_icons.png (unchanged)
+Official atlas frame "0": x=0, y=0, width=13, height=14; displayed via CSS at 2x and 4x.
+Covered by the upstream README's CC-BY-NC-SA-4.0 declaration to the extent licensable and applicable; no matching exception in the source REUSE annotations.
+
+poke-ball.svg, sparkle.svg, satchel.svg: hand-written integer-grid pixel-style SVG illustrations, not copied game icons.
+
+Fusion Pixel Font: 12px proportional Simplified Chinese, release 2026.09.25, unmodified.
+Source: https://github.com/TakWolf/fusion-pixel-font/releases/tag/2026.09.25
+License: SIL Open Font License 1.1.
+Full font copyright and license notices: fonts/OFL.txt and fonts/LICENSES/.
+
+This utility is unofficial and not endorsed by or affiliated with Pokemon rights holders, Pagefault Games or the PokeRogue project. All images and fonts load locally without third-party requests.
