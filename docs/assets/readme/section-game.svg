@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="88" viewBox="0 0 960 88" role="img" aria-labelledby="title" shape-rendering="crispEdges">
+  <title id="title">01 · 冒险起点：宝可梦肉鸽</title>
+  <path d="M12 0h936v6h6v6h6v64h-6v6h-6v6H12v-6H6v-6H0V12h6V6h6Z" fill="#10182b"/>
+  <path d="M16 6h928v6h8v64h-8v6H16v-6H8V12h8Z" fill="#7edee1"/>
+  <path d="M20 12h920v64H20Z" fill="#232d46"/>
+  <path d="M28 20h64v48H28Z" fill="#7edee1"/>
+  <text x="60" y="54" text-anchor="middle" fill="#182038" font-family="monospace" font-size="28" font-weight="700">01</text>
+  <text x="116" y="54" fill="#f6f1df" font-family="sans-serif" font-size="28" font-weight="700">冒险起点：宝可梦肉鸽</text>
+  <path d="M874 24h8v8h-8Zm16 0h8v8h-8Zm16 0h8v8h-8Z" fill="#7edee1"/>
+  <path d="M874 58h40v4h-40Z" fill="#7edee1" opacity=".6"/>
+</svg>

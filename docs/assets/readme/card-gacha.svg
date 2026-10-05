@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="448" height="228" viewBox="0 0 448 228" role="img" aria-labelledby="title desc" shape-rendering="crispEdges">
+  <title id="title">扭蛋小站 · 留一个破壳的惊喜</title>
+  <desc id="desc">补充抽奖券与随机传说蛋。每枚传说蛋需要 100 波孵化。去扭蛋小站。</desc>
+  <path d="M12 0h424v6h6v6h6v204h-6v6h-6v6H12v-6H6v-6H0V12h6V6h6Z" fill="#10182b"/>
+  <path d="M16 6h416v6h6v204h-6v6H16v-6H10V12h6Z" fill="#a4db84"/>
+  <path d="M20 12h408v6h4v192h-4v6H20v-6h-4V18h4Z" fill="#244631"/>
+  <path d="M28 22h288v3H28Z" fill="#a4db84" opacity=".4"/>
+  <text x="30" y="45" fill="#a4db84" font-family="monospace" font-size="12" letter-spacing="2">EGG GACHA</text>
+  <text x="28" y="81" fill="#fff7e8" font-family="sans-serif" font-size="28" font-weight="700">扭蛋小站</text>
+  <text x="29" y="109" fill="#a4db84" font-family="sans-serif" font-size="17">留一个破壳的惊喜</text>
+  <text x="29" y="141" fill="#e2e6ec" font-family="sans-serif" font-size="17">补充抽奖券与随机传说蛋</text>
+  <text x="29" y="166" fill="#e2e6ec" font-family="sans-serif" font-size="17">每枚传说蛋需要 100 波孵化</text>
+  <svg x="344" y="36" width="65" height="70" viewBox="0 0 13 14" overflow="hidden"><image width="64" height="15" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAPCAMAAABjuTlVAAAAY1BMVEVMaXEgICAtccLm3rRzc805QEC1Se/jwDu7GJ6DtGpBQUFiYlrVSUkpLS0pZ7GjQdfNvYP29ilIUFD/9t5Yk9nHYP/ecnL2YlLURbuczYPpzWekrPb///+pjzWeWoqwMb2tuXefNz41AAAAAXRSTlMAQObYZgAAAU5JREFUeF6lksduxDAQQ5fqrmV7S/n/rwxnRsIGyGmRdzF44JNFe6cAkMdboe9/Nbz3QAvOuVeIMb5CSqmFPjweoSrQ3Q5khYbxfCSzhXzfk8lCuZ7IAu2zTkVf+xSoQfsUqEH7FKhB+xSoQc/fQtjsHcC+4qXDvuIksK9ECewrSQSsCxsFWK1+u/kVmK1+PrsZmKx+v8cJWKx+vaYFHCBsl8sWZAYcmqDzwLEJRgfsmyBH4NQEJaHnABfCGVRgdCYwRhMY2QRG+SPwBx3BE8AddQRHgLjXESIB0klHSKQJnk8VrJ7X913X6QaO13fjOOoGkdePOWfdIPH6qZRSNwjs0yAretIJYHBkFCREkgUJiRSBYaAgiGCQz7hWwbd05ir4lDBVwYeEpQq+RBDMEChgCWoALKihBTW0oAYLg/2J7CsQdm+FgXWe/x8Gq/8ACdIfjxH7EgAAAAAASUVORK5CYII=" style="image-rendering:pixelated"/></svg>
+  <path d="M26 181h396v29H26Z" fill="#141c2d"/>
+  <text x="38" y="201" fill="#a4db84" font-family="sans-serif" font-size="16">去扭蛋小站</text>
+  <path d="M394 188h6v5h6v5h-6v5h-6v-5h-9v-5h9Z" fill="#a4db84"/>
+</svg>

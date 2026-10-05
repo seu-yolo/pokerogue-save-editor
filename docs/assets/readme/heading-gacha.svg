@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="64" viewBox="0 0 960 64" role="img" aria-labelledby="title" shape-rendering="crispEdges">
+  <title id="title">扭蛋小站 · 等一个破壳的惊喜</title>
+  <path d="M8 0h944v4h8v52h-8v8H8v-8H0V4h8Z" fill="#232d46"/>
+  <path d="M12 8h8v48h-8Zm16 46h904v3H28Z" fill="#a4db84"/>
+  <text x="36" y="39" fill="#a4db84" font-family="sans-serif" font-size="26" font-weight="700">扭蛋小站 · 等一个破壳的惊喜</text>
+  <path d="M910 18h8v8h-8Zm12 12h8v8h-8Z" fill="#a4db84"/>
+</svg>

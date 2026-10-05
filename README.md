@@ -8,9 +8,7 @@
 
 <a id="游戏"></a>
 
-<img src="docs/assets/readme-divider.svg" width="960" alt="">
-
-## 01 · 冒险起点：宝可梦肉鸽
+## ![01 · 冒险起点：宝可梦肉鸽](docs/assets/readme/section-game.svg)
 
 [PokéRogue（宝可梦肉鸽）](https://pokerogue.net/) 是一款在浏览器里就能玩的宝可梦同人游戏，把熟悉的回合制对战和 Roguelite 闯关结合在一起。挑选初始伙伴，挑战一波又一波的野生宝可梦和训练家，在战后选择奖励、叠加道具，带着队伍探索不同地形。
 
@@ -36,44 +34,26 @@
 
 <a id="功能"></a>
 
-<img src="docs/assets/readme-divider.svg" width="960" alt="">
-
-## 02 · 打开洛托姆的口袋
+## ![02 · 打开洛托姆的口袋](docs/assets/readme/section-features.svg)
 
 打开侧栏，就能为当前队伍补给，解锁喜欢的初始伙伴，或补充扭蛋资源。各种波数和存档都可使用，不用打开开发者工具。
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3><img src="sidepanel/assets/poke-ball.svg" width="24" alt=""> 局内补给</h3>
-      <p>调整金钱、恢复队伍，补充精灵球与道具。也能等待下一次当地稀有野生遭遇。</p>
-      <p><a href="#补给">看看补给方式 →</a></p>
-    </td>
-    <td width="50%" valign="top">
-      <h3><img src="sidepanel/assets/sparkle.svg" width="24" alt=""> 永久收藏</h3>
-      <p>解锁喜欢的初始伙伴。闪光、形态、性格、蛋招式与特性都可以定制，下次开局可选。</p>
-      <p><a href="#收藏">就决定是你了 →</a></p>
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">
-      <h3>🥚 扭蛋小站</h3>
-      <p>设置抽奖券总数，或添加内容未知的随机传说蛋。蛋仍需正常孵化，惊喜留到破壳时。</p>
-      <p><a href="#扭蛋">查看扭蛋与提醒 →</a></p>
-    </td>
-    <td valign="top">
-      <h3><img src="sidepanel/assets/satchel.svg" width="24" alt=""> 备份背包</h3>
-      <p>下载原生 .prsv，查看本机修改记录。局内修改在满足条件时可以撤销。</p>
-      <p><a href="docs/USAGE.md#备份与撤销">先了解备份与撤销 →</a></p>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <a href="#补给"><img src="docs/assets/readme/card-run.svg" width="400" alt="局内补给：修改金钱、恢复队伍、补充精灵球与道具，等待当地稀有野生遭遇。点击查看补给方式。"></a>
+  <a href="#收藏"><img src="docs/assets/readme/card-collection.svg" width="400" alt="永久收藏：定制闪光、形态、性格、蛋招式与特性，保留已有收藏，下次开局可选。点击查看定制方法。"></a>
+</p>
+<p align="center">
+  <a href="#扭蛋"><img src="docs/assets/readme/card-gacha.svg" width="400" alt="扭蛋小站：设置抽奖券总数，添加内容未知的随机传说蛋，仍需正常孵化。点击查看扭蛋说明。"></a>
+  <a href="docs/USAGE.md#备份与撤销"><img src="docs/assets/readme/card-backup.svg" width="400" alt="备份背包：下载原生 .prsv，查看本机修改记录，局内修改支持同状态撤销。点击了解备份与撤销。"></a>
+</p>
+
+点击卡片，查看对应功能的使用方法。
 
 亲密度、宝可病毒、暂停进化、满 IV 等进阶操作及完整范围，见 [使用说明](docs/USAGE.md)。
 
 <a id="补给"></a>
 
-### <img src="sidepanel/assets/poke-ball.svg" width="24" alt=""> 局内补给 · 让队伍喘口气
+### ![局内补给 · 让队伍喘口气](docs/assets/readme/heading-run.svg)
 
 需要补给时，打开“局内”页就能调整。
 
@@ -101,7 +81,7 @@
 
 <a id="收藏"></a>
 
-### <img src="sidepanel/assets/sparkle.svg" width="24" alt=""> 永久收藏 · 就决定是你了！
+### ![永久收藏 · 就决定是你了！](docs/assets/readme/heading-collection.svg)
 
 在“收藏”搜索名字或编号，选中伙伴，再挑选外观、性格和其他配置。已有收藏会保留，新增内容在下次开局时使用。
 
@@ -125,15 +105,13 @@
 
 <a id="扭蛋"></a>
 
-### 🥚 扭蛋小站 · 等一个破壳的惊喜
+### ![扭蛋小站 · 等一个破壳的惊喜](docs/assets/readme/heading-gacha.svg)
 
 选传说 UP、蛋招式 UP 或闪光 UP，添加由游戏生成的随机传说蛋。每枚蛋需要完成 100 波孵化时间，内容留到破壳时揭晓。想直接解锁指定伙伴，可以用上面的“收藏”。
 
 <a id="安装"></a>
 
-<img src="docs/assets/readme-divider.svg" width="960" alt="">
-
-## 03 · 把洛托姆装进口袋
+## ![03 · 把洛托姆装进口袋](docs/assets/readme/section-install.svg)
 
 扩展版本为 `1.0.0`，适配 PokéRogue `1.12.0.10` 和 `1.12.0.11`，需要 Chrome `116` 或更新版本。游戏支持范围会随适配更新；未适配版本可查看和导出备份。
 
@@ -161,9 +139,7 @@ npm run pack
 
 <a id="上手"></a>
 
-<img src="docs/assets/readme-divider.svg" width="960" alt="">
-
-## 04 · 第一次使用：先预览，再保存
+## ![04 · 第一次使用：先预览，再保存](docs/assets/readme/section-start.svg)
 
 1. 只保留一个游戏标签页，进入要修改的对局，停在等待选择招式的界面。
 2. 先去“备份”下载修改前的原生对局／账号 `.prsv`，留在自己电脑上。
@@ -178,9 +154,7 @@ npm run pack
 
 <a id="排错"></a>
 
-<img src="docs/assets/readme-divider.svg" width="960" alt="">
-
-## 05 · 洛托姆卡住了？
+## ![05 · 洛托姆卡住了？](docs/assets/readme/section-help.svg)
 
 <details>
 <summary>连不上，或预览后状态变了</summary>
@@ -210,13 +184,13 @@ npm run pack
 
 </details>
 
-## 一起完善这个口袋
+## ![06 · 一起完善这个口袋](docs/assets/readme/section-community.svg)
 
 遇到问题或有想法，欢迎提交 [Issue](https://github.com/seu-yolo/rotom-pocket/issues)。请写清 Chrome／扩展／游戏版本、操作步骤、预期结果和错误提示；截图记得遮住账号信息。不要公开上传真实存档、账号导出、凭据或含个人数据的诊断记录。
 
 想参与开发，可以从 [开发说明](docs/DEVELOPMENT.md) 和 [架构说明](docs/ARCHITECTURE.md) 开始。更新记录在 [CHANGELOG](CHANGELOG.md)，其他资料见 [文档导航](docs/README.md)。
 
-## 非官方声明与致谢
+## ![07 · 非官方声明与致谢](docs/assets/readme/section-credits.svg)
 
 本项目是非官方工具，与 Pagefault Games、PokéRogue 团队、Nintendo、Game Freak 或 The Pokémon Company 没有隶属或合作关系。请只操作你有权控制的数据，修改前留存备份。修改有存档及账号风险，备份恢复范围见 [使用说明](docs/USAGE.md#备份与撤销)。
 

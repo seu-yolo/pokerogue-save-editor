@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="448" height="228" viewBox="0 0 448 228" role="img" aria-labelledby="title desc" shape-rendering="crispEdges">
+  <title id="title">局内补给 · 让队伍喘口气</title>
+  <desc id="desc">金钱、全恢复、精灵球与道具。等待下一次当地稀有野生遭遇。打开补给菜单。</desc>
+  <path d="M12 0h424v6h6v6h6v204h-6v6h-6v6H12v-6H6v-6H0V12h6V6h6Z" fill="#10182b"/>
+  <path d="M16 6h416v6h6v204h-6v6H16v-6H10V12h6Z" fill="#f3ce70"/>
+  <path d="M20 12h408v6h4v192h-4v6H20v-6h-4V18h4Z" fill="#423725"/>
+  <path d="M28 22h288v3H28Z" fill="#f3ce70" opacity=".4"/>
+  <text x="30" y="45" fill="#f3ce70" font-family="monospace" font-size="12" letter-spacing="2">IN-RUN</text>
+  <text x="28" y="81" fill="#fff7e8" font-family="sans-serif" font-size="28" font-weight="700">局内补给</text>
+  <text x="29" y="109" fill="#f3ce70" font-family="sans-serif" font-size="17">让队伍喘口气</text>
+  <text x="29" y="141" fill="#e2e6ec" font-family="sans-serif" font-size="17">金钱、全恢复、精灵球与道具</text>
+  <text x="29" y="166" fill="#e2e6ec" font-family="sans-serif" font-size="17">等待下一次当地稀有野生遭遇</text>
+  <g transform="translate(344 38) scale(4)"><path d="M6 1h4v1h2v1h1v1h1v2h1v4h-1v2h-1v1h-1v1h-2v1H6v-1H4v-1H3v-1H2v-2H1V6h1V4h1V3h1V2h2Z" fill="#182038"/>
+  <path d="M6 2h4v1h2v1h1v2h1v1H9V6H6v1H2V6h1V4h1V3h2Z" fill="#e85a58"/>
+  <path d="M2 9h4v1h3V9h5v1h-1v2h-1v1h-2v1H6v-1H4v-1H3v-2H2Z" fill="#f4f4e8"/>
+  <path d="M4 10v2h2v1h4v-1h2v-2h1v2h-1v1h-2v1H6v-1H4v-1H3v-2Z" fill="#a8b8c8"/>
+  <path d="M6 6h4v4H6Z" fill="#182038"/><path d="M7 7h2v2H7Z" fill="#f4f4e8"/>
+  <path d="M5 3h4v1H5Zm-1 1h1v2H4Z" fill="#ffb090"/></g>
+  <path d="M26 181h396v29H26Z" fill="#141c2d"/>
+  <text x="38" y="201" fill="#f3ce70" font-family="sans-serif" font-size="16">打开补给菜单</text>
+  <path d="M394 188h6v5h6v5h-6v5h-6v-5h-9v-5h9Z" fill="#f3ce70"/>
+</svg>

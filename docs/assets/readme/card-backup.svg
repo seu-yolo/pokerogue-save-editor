@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="448" height="228" viewBox="0 0 448 228" role="img" aria-labelledby="title desc" shape-rendering="crispEdges">
+  <title id="title">备份背包 · 出发前，留一份存档</title>
+  <desc id="desc">下载原生 .prsv，查看本机记录。局内修改支持同状态撤销。了解备份与撤销。</desc>
+  <path d="M12 0h424v6h6v6h6v204h-6v6h-6v6H12v-6H6v-6H0V12h6V6h6Z" fill="#10182b"/>
+  <path d="M16 6h416v6h6v204h-6v6H16v-6H10V12h6Z" fill="#7edee1"/>
+  <path d="M20 12h408v6h4v192h-4v6H20v-6h-4V18h4Z" fill="#21434b"/>
+  <path d="M28 22h288v3H28Z" fill="#7edee1" opacity=".4"/>
+  <text x="30" y="45" fill="#7edee1" font-family="monospace" font-size="12" letter-spacing="2">SAVE DATA</text>
+  <text x="28" y="81" fill="#fff7e8" font-family="sans-serif" font-size="28" font-weight="700">备份背包</text>
+  <text x="29" y="109" fill="#7edee1" font-family="sans-serif" font-size="17">出发前，留一份存档</text>
+  <text x="29" y="141" fill="#e2e6ec" font-family="sans-serif" font-size="17">下载原生 .prsv，查看本机记录</text>
+  <text x="29" y="166" fill="#e2e6ec" font-family="sans-serif" font-size="17">局内修改支持同状态撤销</text>
+  <g transform="translate(344 38) scale(4)"><path d="M5 1h6v1h1v2h2v1h1v9h-1v1H2v-1H1V5h1V4h2V2h1Z" fill="#182038"/>
+  <path d="M5 2h6v2H9V3H7v1H5Z" fill="#f0c878"/>
+  <path d="M3 5h10v1h1v7h-1v1H3v-1H2V6h1Z" fill="#58a8a0"/>
+  <path d="M3 6h10v2H3Z" fill="#88c8b0"/>
+  <path d="M4 10h8v3H4Z" fill="#287878"/>
+  <path d="M7 7h2v3H7Z" fill="#182038"/><path d="M7 8h2v1H7Z" fill="#f0c878"/></g>
+  <path d="M26 181h396v29H26Z" fill="#141c2d"/>
+  <text x="38" y="201" fill="#7edee1" font-family="sans-serif" font-size="16">了解备份与撤销</text>
+  <path d="M394 188h6v5h6v5h-6v5h-6v-5h-9v-5h9Z" fill="#7edee1"/>
+</svg>

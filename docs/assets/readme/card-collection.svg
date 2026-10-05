@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="448" height="228" viewBox="0 0 448 228" role="img" aria-labelledby="title desc" shape-rendering="crispEdges">
+  <title id="title">永久收藏 · 就决定是你了！</title>
+  <desc id="desc">闪光、形态、性格、蛋招式与特性。保留已有收藏，下次开局可选。定制初始伙伴。</desc>
+  <path d="M12 0h424v6h6v6h6v204h-6v6h-6v6H12v-6H6v-6H0V12h6V6h6Z" fill="#10182b"/>
+  <path d="M16 6h416v6h6v204h-6v6H16v-6H10V12h6Z" fill="#c0a6ff"/>
+  <path d="M20 12h408v6h4v192h-4v6H20v-6h-4V18h4Z" fill="#382d51"/>
+  <path d="M28 22h288v3H28Z" fill="#c0a6ff" opacity=".4"/>
+  <text x="30" y="45" fill="#c0a6ff" font-family="monospace" font-size="12" letter-spacing="2">STARTERS</text>
+  <text x="28" y="81" fill="#fff7e8" font-family="sans-serif" font-size="28" font-weight="700">永久收藏</text>
+  <text x="29" y="109" fill="#c0a6ff" font-family="sans-serif" font-size="17">就决定是你了！</text>
+  <text x="29" y="141" fill="#e2e6ec" font-family="sans-serif" font-size="17">闪光、形态、性格、蛋招式与特性</text>
+  <text x="29" y="166" fill="#e2e6ec" font-family="sans-serif" font-size="17">保留已有收藏，下次开局可选</text>
+  <g transform="translate(344 38) scale(4)"><path d="M6 2h2v3h1v1h3v2H9v1H8v4H6V9H5V8H1V6h4V5h1Z" fill="#182038"/>
+  <path d="M7 3v3h1v1h3v1H8v1H7v3H6V9H5V8H2V7h3V6h1V3Z" fill="#f8d060"/>
+  <path d="M12 0h1v2h2v1h-2v2h-1V3h-2V2h2ZM12 11h1v1h1v1h-1v1h-1v-1h-1v-1h1Z" fill="#90d8e0"/></g>
+  <path d="M26 181h396v29H26Z" fill="#141c2d"/>
+  <text x="38" y="201" fill="#c0a6ff" font-family="sans-serif" font-size="16">定制初始伙伴</text>
+  <path d="M394 188h6v5h6v5h-6v5h-6v-5h-9v-5h9Z" fill="#c0a6ff"/>
+</svg>
