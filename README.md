@@ -2,7 +2,7 @@
   <h1>洛托姆口袋 · 宝可梦肉鸽辅助工具</h1>
   <p>Rotom Pocket · PokéRogue Save Editor</p>
   <p>一个住在 Chrome 侧栏里的 PokéRogue 小帮手。</p>
-  <p><a href="https://github.com/seu-yolo/pokerogue-rotom-pocket/releases/tag/v1.0.0">下载安装包</a> · <a href="#安装">安装方法</a> · <a href="docs/USAGE.md">使用说明</a> · <a href="https://github.com/seu-yolo/pokerogue-rotom-pocket/issues">反馈问题</a></p>
+  <p><a href="https://github.com/seu-yolo/pokerogue-save-editor/releases/tag/v1.0.0">下载安装包</a> · <a href="#安装">安装方法</a> · <a href="docs/USAGE.md">使用说明</a> · <a href="https://github.com/seu-yolo/pokerogue-save-editor/issues">反馈问题</a></p>
   <p><sub>v1.0.0 · Chrome 116+ · 适配游戏 1.12.0.10 / 1.12.0.11</sub></p>
 </div>
 
@@ -55,14 +55,14 @@
 
 ## 下载与安装
 
-官网玩家下载 [RogueSave-v1.0.0.zip](https://github.com/seu-yolo/pokerogue-rotom-pocket/releases/download/v1.0.0/RogueSave-v1.0.0.zip)，解压后安装。下载安装包不需要 Node.js；GitHub 的 `Source code` ZIP 是源码，不是扩展安装包。
+官网玩家下载 [RogueSave-v1.0.0.zip](https://github.com/seu-yolo/pokerogue-save-editor/releases/download/v1.0.0/RogueSave-v1.0.0.zip)，解压后安装。下载安装包不需要 Node.js；GitHub 的 `Source code` ZIP 是源码，不是扩展安装包。
 
 1. 在 Chrome 打开 `chrome://extensions/`，开启右上角的“开发者模式”。
 2. 点“加载已解压的扩展程序”，选择直接包含 `manifest.json` 的文件夹。
 3. 打开 [游戏官网](https://pokerogue.net/)；若已经打开，刷新一次游戏页面。
 4. 点击浏览器工具栏的“洛托姆口袋”图标打开侧栏。找不到图标时，在扩展菜单里将它固定。
 
-本机离线游戏使用 [RogueSave-Offline-v1.0.0.zip](https://github.com/seu-yolo/pokerogue-rotom-pocket/releases/download/v1.0.0/RogueSave-Offline-v1.0.0.zip)，只连接 `http://127.0.0.1:8000`，不包含游戏本体。准备方法见 [离线版说明](docs/OFFLINE_TESTING.md)。
+本机离线游戏使用 [RogueSave-Offline-v1.0.0.zip](https://github.com/seu-yolo/pokerogue-save-editor/releases/download/v1.0.0/RogueSave-Offline-v1.0.0.zip)，只连接 `http://127.0.0.1:8000`，不包含游戏本体。准备方法见 [离线版说明](docs/OFFLINE_TESTING.md)。
 
 升级时更新原来加载的文件夹，再到扩展管理页点“重新加载”。不要卸载扩展或清空数据，否则本机备份和待确认记录可能丢失。`RogueSave` 是项目早期名称，安装包暂时沿用它。
 
@@ -109,13 +109,13 @@
 
 ## 开发与反馈
 
-欢迎提交 [Issue](https://github.com/seu-yolo/pokerogue-rotom-pocket/issues)，写清 Chrome／扩展／游戏版本、操作步骤、预期结果和错误提示。截图记得遮住账号信息，不要公开上传真实存档、账号导出、凭据或含个人数据的诊断记录。
+欢迎提交 [Issue](https://github.com/seu-yolo/pokerogue-save-editor/issues)，写清 Chrome／扩展／游戏版本、操作步骤、预期结果和错误提示。截图记得遮住账号信息，不要公开上传真实存档、账号导出、凭据或含个人数据的诊断记录。
 
 从源码打包需要 Git 和 Node.js 20+，不需要 `npm install`：
 
 ```bash
-git clone https://github.com/seu-yolo/pokerogue-rotom-pocket.git
-cd pokerogue-rotom-pocket
+git clone https://github.com/seu-yolo/pokerogue-save-editor.git
+cd pokerogue-save-editor
 npm run pack
 ```
 

@@ -1,6 +1,6 @@
 # 首发准备
 
-首发版本统一为 `1.0.0`，安装包在 [GitHub Releases](https://github.com/seu-yolo/pokerogue-rotom-pocket/releases/tag/v1.0.0) 提供。原开发工作区和 Chrome 已加载的扩展目录保持不变；本地安装产物在独立仓库的 `dist/`。
+首发版本统一为 `1.0.0`，安装包在 [GitHub Releases](https://github.com/seu-yolo/pokerogue-save-editor/releases/tag/v1.0.0) 提供。原开发工作区和 Chrome 已加载的扩展目录保持不变；本地安装产物在独立仓库的 `dist/`。
 
 ## 仓库整理
 
